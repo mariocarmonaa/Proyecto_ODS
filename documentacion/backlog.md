@@ -1,26 +1,76 @@
-# Backlog del Proyecto Gestor CRUD 
+# 🌱 Backlog ODS 15 – Proyecto Web
 
-registrarse/login para acceder al dashboard. (CRUD Jugadores)
-   Criterios: Formulario simple, validación, localStorage.
-   
+## 👥 Equipo
+- Izan  
+- Lorenzo  
+- Mario  
 
+---
 
- Mecánicas Core
-2. Como usuario, quiero crear/listar/editar/eliminar Huellas de Carbono. (CRUD Huellas)
-   - Criterios: Formularios, tabla con filtros, validación emisiones.
+## 📌 Objetivo
+Crear una aplicación web con HTML, CSS y JavaScript para gestionar ecosistemas y concienciar sobre el ODS 15.
 
-3. Como usuario, quiero gestionar Diplodocus (add/edit/delete). (CRUD Diplodocus)
-   - Criterios: Formularios, lista con detalles salud/ubicación.
+---
 
-4. Como usuario, quiero ver/editar Resultados ambientales. (CRUD Resultados)
-   - Criterios: Tabla editable, métricas calculadas.
+## 🧩 1. Interfaz y Controles
+- Formulario con:
+  - input text (nombre)
+  - textarea (descripción)
+  - hidden (id)
+  - select (tipo de ecosistema)
+  - radio (estado)
+  - checkbox (acciones)
+  - date (fecha)
+  - file (imagen)
+- Botones para enviar y acciones
+- Enlaces para navegación
 
+---
 
-5.  Como usuario, quiero CRUD completo para todas entidades con roles (user/admin).
-   - Criterios: Permisos básicos, formularios edit/delete/search.
+## 🧭 2. Navegación
+- Página inicio
+- Página registro
+- Página listado
+- Página detalle
+- Página edición
+- Página estadísticas
+- Menú de navegación entre páginas
 
-## Tareas Técnicas
-- Configurar estructura HTML/JS con tablas y formularios.
-- Responsive design para dashboards.
-- localStorage para persistencia.
-- Testing manual de CRUD y navegación mouse/teclado.
+---
+
+## 🎮 3. Eventos (JavaScript)
+- Click en botones
+- Validación con teclado
+- Efectos hover con CSS/JS
+- Drag & Drop para imágenes
+
+---
+
+## 🗄️ 4. CRUD (JavaScript)
+- Añadir ecosistemas
+- Mostrar lista
+- Editar datos
+- Eliminar ecosistemas
+- Buscar por filtros
+
+---
+
+## 🌍 5. ODS 15
+- Mostrar información ambiental
+- Permitir reportar problemas
+- Promover cuidado de la naturaleza
+
+---
+
+## 🧼 6. Código limpio
+- Separar HTML, CSS y JS
+- Código ordenado
+- Nombres claros
+- Evitar repetir código
+
+---
+
+### 🔄 Trabajo en equipo
+- Uso de GitHub
+- Crear ramas (feature)
+- Unir cambios al final
