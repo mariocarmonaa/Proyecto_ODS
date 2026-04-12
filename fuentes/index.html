@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>CRUD ODS</title>
+    </head>
+    <body>
+        <div class="vistaActiva"> FORMULARIO DE ALTA DE USUARIOS
+            <div>
+                <label for=nombre>Introduce el nombre de usuario: </label>
+                <input id="nombre" type="text" />
+            </div>
+
+            <div>
+                <label for=fecha>Introduce tu fecha de nacimiento: </label>
+                <input id="fecha" type=date />
+            </div>
+
+             <div>
+                <label for=tipo>Introduce tu género: </label>
+                <select id="tipo">
+                    <option>Masculino</option>
+                    <option>Femenino</option>
+                    <option>Prefiero no decirlo</option>
+                </select>
+            </div>
+            
+
+            <p>Selecciona tus animales en peligro de extinción favoritos: </p>
+            <div>
+                <input type="checkbox" id="panda" name="animalesExtincion" value="panda"/>
+                <label for="panda">Oso Panda</label><br>
+            </div>
+            <div>
+                <input type="checkbox" id="tigre" name="animalesExtincion" value="tigre"/>
+                <label for="tigre">Tigre de Bengala</label><br>
+            </div>
+            
+            <div>
+                <input type="checkbox" id="ajolote" name="animalesExtincion" value="ajolote"/>
+                <label for="ajolote">Ajolote</label><br>
+            </div>
+
+            <div>
+                <label for="descripcion">Introduce una breve explicación de porque has elegido estos animales: </label><br>
+                <textarea id="descripcion" rows="4" cols="50" placeholder="Deja aquí tu descripcion:..."></textarea>
+            </div>
+
+            <div>
+                <button id="botonInsertar">Registrar</button>
+            </div>
+            <script defer src="js/modelos/jugador.js"></script>
+            <script defer src="js/app.js"></script>
+        </div>
+    </body>
+
+</html>
