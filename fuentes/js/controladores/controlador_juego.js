@@ -22,13 +22,13 @@ function insertarJugador() {
 
     let animales = [];
 
-    if (document.getElementById("panda").checked) {
+    if (document.querySelector("panda").checked) {
         animales.push("panda");
     }
-    if (document.getElementById("tigre").checked) {
+    if (document.querySelectord("tigre").checked) {
         animales.push("tigre");
     }
-    if (document.getElementById("ajolote").checked) {
+    if (document.querySelector("ajolote").checked) {
         animales.push("ajolote");
     }
 
@@ -84,16 +84,16 @@ function cargarJugadorEnFormulario(id) {
 
     if (jugador === null) return;
 
-    document.getElementById("nombre").value = jugador.nombre;
-    document.getElementById("fecha").value = jugador.fecha;
-    document.getElementById("tipo").value = jugador.genero;
-    document.getElementById("descripcion").value = jugador.descripcion;
+    document.querySelector("nombre").value = jugador.nombre;
+    document.querySelector("fecha").value = jugador.fecha;
+    document.querySelector("tipo").value = jugador.genero;
+    document.querySelector("descripcion").value = jugador.descripcion;
 
-    document.getElementById("panda").checked = jugador.animales.indexOf("panda") !== -1;
-    document.getElementById("tigre").checked = jugador.animales.indexOf("tigre") !== -1;
-    document.getElementById("ajolote").checked = jugador.animales.indexOf("ajolote") !== -1;
+    document.querySelector("panda").checked = jugador.animales.indexOf("panda") !== -1;
+    document.querySelector("tigre").checked = jugador.animales.indexOf("tigre") !== -1;
+    document.querySelector("ajolote").checked = jugador.animales.indexOf("ajolote") !== -1;
 
-    document.getElementById("idOculto").value = jugador.id;
+    document.querySelector("idOculto").value = jugador.id;
 }
 
 function actualizarJugador(id) {
@@ -104,9 +104,9 @@ function actualizarJugador(id) {
 
     let animales = [];
 
-    if (document.getElementById("panda").checked) animales.push("panda");
-    if (document.getElementById("tigre").checked) animales.push("tigre");
-    if (document.getElementById("ajolote").checked) animales.push("ajolote");
+    if (document.querySelector("panda").checked) animales.push("panda");
+    if (document.querySelector("tigre").checked) animales.push("tigre");
+    if (document.querySelector("ajolote").checked) animales.push("ajolote");
 
     for (let i = 0; i < listaJugadores.length; i++) {
         if (listaJugadores[i].id === id) {
@@ -129,11 +129,11 @@ function limpiarFormulario() {
     document.querySelector("#tipo").value = "Masculino";
     document.querySelector("#descripcion").value = "";
 
-    document.getElementById("panda").checked = false;
-    document.getElementById("tigre").checked = false;
-    document.getElementById("ajolote").checked = false;
+    document.querySelector("panda").checked = false;
+    document.querySelector("tigre").checked = false;
+    document.querySelector("ajolote").checked = false;
 
-    document.getElementById("idOculto").value = "";
+    document.querySelector("idOculto").value = "";
 }
 
 function mostrarMensaje(texto, tipo) {
