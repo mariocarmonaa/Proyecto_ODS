@@ -129,11 +129,11 @@ function limpiarFormulario() {
     document.querySelector("#tipo").value = "Masculino";
     document.querySelector("#descripcion").value = "";
 
-    document.getElementById("panda").checked = false;
-    document.getElementById("tigre").checked = false;
-    document.getElementById("ajolote").checked = false;
+    document.querySelector("panda").checked = false;
+    document.querySelector("tigre").checked = false;
+    document.querySelector("ajolote").checked = false;
 
-    document.getElementById("idOculto").value = "";
+    document.querySelector("idOculto").value = "";
 }
 
 function mostrarMensaje(texto, tipo) {
