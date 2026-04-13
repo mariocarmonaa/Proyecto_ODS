@@ -137,7 +137,7 @@ function limpiarFormulario() {
 }
 
 function mostrarMensaje(texto, tipo) {
-    const caja = document.getElementById("mensajeEstado");
+    const caja = document.querySelector("mensajeEstado");
 
     caja.textContent = texto;
 
