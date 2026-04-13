@@ -1,4 +1,4 @@
-export default class VistaRegistro{
+export default class VistaRegistro {
     #controlador_registro
     #nombreUsuario
     #fechaNacimiento
@@ -6,7 +6,7 @@ export default class VistaRegistro{
     #descripcion
     #agregar
 
-    constructor(controlador_registro){
+    constructor(controlador_registro) {
         this.#nombreUsuario = document.querySelector("#nombre")
         this.#fechaNacimiento = document.querySelector("#fecha")
         this.#tipoGenero = document.querySelector("#tipo")
