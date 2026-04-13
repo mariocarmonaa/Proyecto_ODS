@@ -1,13 +1,13 @@
-class Controlador_registro{
+class Controlador_registro {
     #vistaRegistro
     #modeloJugador
 
-    constructor(){
+    constructor() {
         this.#vistaRegistro = new VistaRegistro(this)
         this.#modeloJugador = new ModeloJugador()
     }
 }
 
-document.addEventListener('DOMContentLoaded', () =>{
+document.addEventListener('DOMContentLoaded', () => {
     new Controlador_registro()
 })
