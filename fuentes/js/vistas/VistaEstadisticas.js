@@ -16,8 +16,8 @@ export default class VistaEstadisticas {
         })
         const media = (sumaEdades / jugadores.length).toFixed(1)
         this.contenedor.innerHTML = `
-            <p>👥 Total jugadores: ${jugadores.length}</p>
-            <p>📊 Edad media: ${media} años</p>
+            <p> Total jugadores: ${jugadores.length}</p>
+            <p>Edad media: ${media} años</p>
         `
     }
 
