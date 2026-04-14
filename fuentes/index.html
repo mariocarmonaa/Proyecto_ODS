@@ -3,93 +3,84 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>CRUD ODS</title>
-
-    <link rel="stylesheet" href="css/estilos.cs">
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
 
-    <div class="vistaActiva"> FORMULARIO DE ALTA DE USUARIOS
+    <section id="vista-login" class="vista">
+        <h1>ACCESO AL SISTEMA</h1>
         <div>
-            <label for="nombre">Introduce el nombre de usuario: </label>
-            <input id="nombre" type="text" />
-        </div>
-
-        <div>
-            <label for="fecha">Introduce tu fecha de nacimiento: </label>
-            <input id="fecha" type="date" />
-        </div>
-
-        <div>
-            <label for="tipo">Introduce tu género: </label>
-            <select id="tipo">
-                <option>Masculino</option>
-                <option>Femenino</option>
-                <option>Prefiero no decirlo</option>
-            </select>
-        </div>
-
-        <p>Selecciona tus animales en peligro de extinción favoritos: </p>
-        <div>
-            <input type="checkbox" id="panda" name="animalesExtincion" value="panda" />
-            <label for="panda">Oso Panda</label><br>
+            <label>Usuario</label>
+            <input type="text" id="user">
         </div>
         <div>
-            <input type="checkbox" id="tigre" name="animalesExtincion" value="tigre" />
-            <label for="tigre">Tigre de Bengala</label><br>
+            <label>Contraseña</label>
+            <input type="password" id="pass">
         </div>
-        <div>
-            <input type="checkbox" id="ajolote" name="animalesExtincion" value="ajolote" />
-            <label for="ajolote">Ajolote</label><br>
-        </div>
+        <button id="btnEntrar">Enviar para avanzar</button>
+    </section>
 
-        <div>
-            <label for="descripcion">Introduce una breve explicación de porque has elegido estos animales: </label><br>
-            <textarea id="descripcion" rows="4" cols="50" placeholder="Deja aquí tu descripcion:..."></textarea>
-        </div>
+    <nav id="menu-navegacion" style="display:none">
+        <button id="btnNavForm">Ir al Formulario</button>
+        <button id="btnNavLista">Ver Listado</button>
+        <button id="btnNavSalir">Salir</button>
+    </nav>
 
-        <input type="hidden" id="idOculto" value="" />
+    <section id="vista-formulario" class="vista" style="display:none">
+        <h2>FORMULARIO DE ALTA DE USUARIOS</h2>
+        <input type="hidden" id="idOculto">
 
-        <div>
-            <button id="botonInsertar">Registrar</button>
-        </div>
-    </div>
+        <label>Introduce el nombre de usuario:</label>
+        <input id="nombre" type="text" /><br>
 
+        <label>Introduce tu fecha de nacimiento:</label>
+        <input id="fecha" type="date" /><br>
 
-
-    <div id="mensajeEstado" class="mensaje"></div>
-
-
-    <div class="filtros">
-        <h3>Buscar / Filtrar</h3>
-        <input type="text" id="campoBusqueda" placeholder="Buscar por nombre..." />
-        <button id="botonBuscar">Buscar</button>
-        <button id="botonResetBusqueda"> Limpiar</button>
-        <br><br>
-        <label for="filtroAnimal">Filtrar por animal favorito:</label>
-        <select id="filtroAnimal">
-            <option value="">-- Todos --</option>
-            <option value="panda">Oso Panda</option>
-            <option value="tigre">Tigre de Bengala</option>
-            <option value="ajolote">Ajolote</option>
+        <label>Introduce tu género:</label>
+        <select id="tipo">
+            <option>Masculino</option>
+            <option>Femenino</option>
+            <option>Prefiero no decirlo</option>
         </select>
-        <button id="botonFiltrar">Filtrar</button>
-    </div>
 
+        <p>Selecciona tus animales favoritos:</p>
+        <input type="checkbox" id="panda" value="panda"> Oso Panda<br>
+        <input type="checkbox" id="tigre" value="tigre"> Tigre de Bengala<br>
+        <input type="checkbox" id="ajolote" value="ajolote"> Ajolote<br>
 
-    <div class="listado">
+        <label>Explicación de tu elección:</label><br>
+        <textarea id="descripcion"></textarea><br>
+
+        <button id="botonInsertar">Registrar</button>
+    </section>
+
+    <section id="vista-listado" class="vista" style="display:none">
+        <h3>Buscar / Filtrar</h3>
+        <input type="text" id="campoBusqueda">
+        <button id="botonBuscar">Buscar</button>
+        <button id="botonResetBusqueda">Limpiar</button>
+
+        <p>Filtrar por animal:
+            <select id="filtroAnimal">
+                <option value="">-- Todos --</option>
+                <option value="panda">Oso Panda</option>
+                <option value="tigre">Tigre de Bengala</option>
+                <option value="ajolote">Ajolote</option>
+            </select>
+            <button id="botonFiltrar">Filtrar</button>
+        </p>
+
+        <hr>
         <h3>Lista de jugadores</h3>
         <div id="listaJugadores"></div>
-    </div>
 
-
-    <div class="estadisticas">
+        <hr>
         <h3>Estadísticas</h3>
         <div id="estadisticas"></div>
         <button id="botonEstadisticas">Actualizar estadísticas</button>
-    </div>
+    </section>
 
     <script type="module" src="js/app.js"></script>
 </body>
