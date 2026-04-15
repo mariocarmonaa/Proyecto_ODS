@@ -1,16 +1,34 @@
-export default class VistaRegistro {
-    #controlador_registro
-    #nombreUsuario
-    #fechaNacimiento
-    #tipoGenero
-    #descripcion
-    #agregar
+export default class VistaRegistro{
+    #inputNombre
+    #inputFecha
+    #inputGenero
+    #inputDescripcion
+    #inputBoton
+    #controladorRegistro
 
-    constructor(controlador_registro) {
-        this.#nombreUsuario = document.querySelector("#nombre")
-        this.#fechaNacimiento = document.querySelector("#fecha")
-        this.#tipoGenero = document.querySelector("#tipo")
-        this.#descripcion = document.querySelector("#descripcion")
-        this.#agregar = document.querySelector("#botonInsertar")
+    constructor(controladorRegistro){
+        this.#controladorRegistro = controladorRegistro
+        this.#inputNombre = document.querySelector('#nombre')
+        this.#inputFecha = document.querySelector('#fecha')
+        this.#inputGenero = document.querySelector('#tipo')
+        this.#inputDescripcion = document.querySelector('#descripcion')
+        this.#inputBoton = document.querySelector('#botonInsertar')
+
+        this.#inputBoton.addEventListener('click', this.#insertar.bind(this))
+    }
+
+    #insertar(evento){
+        evento.preventDefault()
+        const nombre = this.#inputNombre.value
+        const fecha = this.#inputFecha.value 
+        const genero = this.#inputGenero.value 
+        const descripcion = this.#inputDescripcion.value 
+        const datos = {
+            'nombre': nombre,
+            'fechaNacimiento': fecha,
+            'genero': genero,
+            'descripcion': descripcion
+        }
+        this.#controladorRegistro.insertar(datos)
     }
 }

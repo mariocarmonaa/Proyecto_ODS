@@ -1,15 +1,13 @@
-class Jugador {
+export default class Jugador{
     #nombre
     #fecha
     #genero
     #descripcion
-    #animalesSeleccionados
 
-    constructor(nombre, fecha, genero, descripcion, animalesSeleccionados) {
+    constructor(nombre, fecha, genero, descripcion){
         this.#nombre = nombre
         this.#fecha = fecha
         this.#genero = genero
         this.#descripcion = descripcion
-        this.#animalesSeleccionados = animalesSeleccionados
     }
 }

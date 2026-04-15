@@ -1,11 +1,12 @@
-export default class Modelo {
+export default class ModeloJugador{
     #jugadores
 
-    constructor() {
+    constructor(){
         this.#jugadores = new Set()
     }
 
-    agregarJugadores(jugador) {
+    agregarJugador(jugador){
+        console.log("Jugador agregado: " + jugador)
         this.#jugadores.add(jugador)
         console.log(this.#jugadores)
     }
