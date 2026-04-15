@@ -3,11 +3,13 @@ export default class Jugador{
     #fecha
     #genero
     #descripcion
+    #animales
 
-    constructor(nombre, fecha, genero, descripcion){
+    constructor(nombre, fecha, genero, descripcion, animales){
         this.#nombre = nombre
         this.#fecha = fecha
         this.#genero = genero
         this.#descripcion = descripcion
+        this.#animales = animales
     }
 }

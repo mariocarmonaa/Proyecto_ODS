@@ -12,7 +12,7 @@ class ControladorRegistro{
     }
 
     insertar(datos){
-        const jugador = new Jugador(datos.nombre, datos.fechaNacimiento, datos.genero, datos.descripcion)
+        const jugador = new Jugador(datos.nombre, datos.fechaNacimiento, datos.genero, datos.descripcion, datos.animales)
         this.#modeloJugador.agregarJugador(jugador)
     }
 }
