@@ -2,7 +2,7 @@
 
 ## 📖 Descripción
 
-Este proyecto consiste en la implementación de un CRUD (**Crear, Leer, Actualizar y Borrar**) relacionado con un juego basado en el **ODS 14: Vida submarina**.
+Este proyecto consiste en la implementación de un CRUD (**Crear, Leer, Actualizar y Borrar**) relacionado con un juego basado en el **ODS 15: Vida terrestre.
 
 En esta primera fase **no se desarrolla el juego**, sino la gestión de datos que se utilizarán en él (por ejemplo: basura, puntuaciones o elementos del juego).
 
