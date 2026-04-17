@@ -38,7 +38,8 @@ El sistema permite:
 ## 📂 Estructura del proyecto
 
 ```
-/ProyectoODS14
+/ProyectoODS15
+|
 │   📄 README.md
 │
 ├───📁 documentacion
