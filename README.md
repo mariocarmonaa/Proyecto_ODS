@@ -18,9 +18,9 @@ En esta primera fase **no se desarrolla el juego**, sino la gestión de datos qu
 
 ## 🛠️ Tecnologías
 
-* HTML
-* CSS
-* JavaScript 
+* HTML 0.9%
+* CSS 17.6%
+* JavaScript 81.5%
 
 ---
 
