@@ -10,4 +10,8 @@ export default class ModeloJugador{
         this.#jugadores.add(jugador)
         console.log(this.#jugadores)
     }
+
+    listar(){
+        return this.#jugadores
+    }
 }

@@ -14,6 +14,11 @@ class ControladorRegistro{
     insertar(datos){
         const jugador = new Jugador(datos.nombre, datos.fechaNacimiento, datos.genero, datos.descripcion, datos.animales)
         this.#modeloJugador.agregarJugador(jugador)
+        this.#listar()
+    }
+    #listar(){
+        const datos = this.#modeloJugador.listar()
+        this.#vistaRegistro.listar(datos)
     }
 }
 
