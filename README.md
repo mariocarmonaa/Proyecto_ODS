@@ -50,7 +50,7 @@ El sistema permite:
     │   📄 app.js
     │
     ├───📁 css
-    │   │   📄 .gitkeep
+    │   │   📄 estilos.css
     │
     └───📁 js
         ├───📁 controladores
