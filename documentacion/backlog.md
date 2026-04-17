@@ -35,6 +35,7 @@ Crear una aplicación web con HTML, CSS y JavaScript para gestionar ecosistemas 
 - Página edición
 - Página estadísticas
 - Menú de navegación entre páginas
+- 
 
 ---
 
@@ -42,7 +43,7 @@ Crear una aplicación web con HTML, CSS y JavaScript para gestionar ecosistemas 
 - Click en botones
 - Validación con teclado
 - Efectos hover con CSS/JS
-- Drag & Drop para imágenes
+- Drag & Drop para imágenes/Arrastrar y soltar
 
 ---
 
@@ -63,14 +64,15 @@ Crear una aplicación web con HTML, CSS y JavaScript para gestionar ecosistemas 
 ---
 
 ## 🧼 6. Código limpio
-- Separar HTML, CSS y JS
-- Código ordenado
-- Nombres claros
-- Evitar repetir código
+- Separar HTML, CSS y JS.
+- Código ordenado.
+- Nombres claros.
+- Evitar duplicación de código.
 
 ---
 
 ### 🔄 Trabajo en equipo
+ -Traer cambios de remoto a local/pull
 - Uso de GitHub
 - Crear ramas (feature)
-- Unir cambios al final
+- Unir cambios al final (merge)
