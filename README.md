@@ -20,7 +20,7 @@ En esta primera fase **no se desarrolla el juego**, sino la gestión de datos qu
 
 * HTML
 * CSS
-* JavaScript
+* JavaScript 
 
 ---
 
@@ -89,4 +89,4 @@ El sistema permite:
 
 ## 📌 Estado del proyecto
 
-🚧 En desarrollo (fase CRUD)
+🚧 En desarrollo (fase CRUD, CREATE READ UPDATE, DELETE)
