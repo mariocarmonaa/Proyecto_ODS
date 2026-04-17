@@ -54,7 +54,7 @@ El sistema permite:
     │
     └───📁 js
         ├───📁 controladores
-        │   │   📄 .gitkeep
+        │   │   
         │   │   📄 ControladorEstadisticas.js
         │   │   📄 ControladorFiltros.js
         │   │   📄 ControladorLista.js
