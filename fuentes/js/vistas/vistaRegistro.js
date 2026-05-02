@@ -8,12 +8,14 @@ export default class VistaRegistro{
     #inputAnimales
     #tbody
     #inputBotonLimpiar
+    #idUsuario
 
     constructor(controladorRegistro){
         this.#controladorRegistro = controladorRegistro
         this.#obtenerReferenciasIU()
         this.#inputBoton.addEventListener('click', this.#insertar.bind(this))
         this.#inputBotonLimpiar.addEventListener('click', this.#limpiar.bind(this))
+        this.#idUsuario = 0
     }
 
     #obtenerReferenciasIU(){
@@ -35,6 +37,7 @@ export default class VistaRegistro{
         const genero = this.#inputGenero.value 
         const descripcion = this.#inputDescripcion.value
         const animalesSeleccionados = []
+        const idUser = this.#idUsuario
         for (const chk of this.#inputAnimales){
             if (chk.checked){
                 animalesSeleccionados.push(chk.value)
@@ -45,8 +48,11 @@ export default class VistaRegistro{
             'fechaNacimiento': fecha,
             'genero': genero,
             'descripcion': descripcion,
-            'animales': animalesSeleccionados
+            'animales': animalesSeleccionados,
+            'id': idUser
         }
+        this.#idUsuario += 1
+        console.log(datos)
         this.#controladorRegistro.insertar(datos)
     }
 
@@ -77,6 +83,17 @@ export default class VistaRegistro{
             const tdGenero = document.createElement('td')
             tr.appendChild(tdGenero)
             tdGenero.textContent = jugador.getGenero()
+
+            const tdEliminar = document.createElement('td')
+            const botonEliminar = document.createElement('button')
+            botonEliminar.textContent = "Eliminar"
+
+            botonEliminar.addEventListener('click', () =>{
+                this.#controladorRegistro.eliminar(jugador.getId())
+            })
+
+            tdEliminar.appendChild(botonEliminar)
+            tr.appendChild(tdEliminar)
         })
     }
 }

@@ -14,4 +14,13 @@ export default class ModeloJugador{
     listar(){
         return this.#jugadores
     }
+
+    eliminarJugador(id){
+        for (const jugador of this.#jugadores){
+            if(jugador.getId() === id){
+                this.#jugadores.delete(jugador)
+                break
+            }
+        }
+    }
 }

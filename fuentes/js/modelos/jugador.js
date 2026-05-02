@@ -4,13 +4,15 @@ export default class Jugador{
     #genero
     #descripcion
     #animales
+    #id
 
-    constructor(nombre, fecha, genero, descripcion, animales){
+    constructor(nombre, fecha, genero, descripcion, animales, id){
         this.#nombre = nombre
         this.#fecha = new Date(fecha)
         this.#genero = genero
         this.#descripcion = descripcion
         this.#animales = animales
+        this.#id = id
     }
 
     getNombre(){
@@ -26,5 +28,9 @@ export default class Jugador{
 
     getGenero(){
         return this.#genero
+    }
+
+    getId(){
+        return this.#id
     }
 }
