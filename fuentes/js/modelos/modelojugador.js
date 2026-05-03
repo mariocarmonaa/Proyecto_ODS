@@ -3,8 +3,8 @@ export default class ModeloJugador {
         this.jugadores = []
     }
 
-    agregar(jugador) {
-        this.jugadores.push(jugador)
+    agregar(j) {
+        this.jugadores.push(j)
     }
 
     listar() {
@@ -15,9 +15,9 @@ export default class ModeloJugador {
         this.jugadores = this.jugadores.filter(j => j.getId() !== id)
     }
 
-    editar(jugadorNuevo) {
+    editar(nuevo) {
         this.jugadores = this.jugadores.map(j =>
-            j.getId() === jugadorNuevo.getId() ? jugadorNuevo : j
+            j.getId() === nuevo.getId() ? nuevo : j
         )
     }
 }
