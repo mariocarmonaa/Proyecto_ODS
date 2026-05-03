@@ -35,4 +35,7 @@ class ControladorRegistro {
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => new ControladorRegistro())
+document.addEventListener('DOMContentLoaded', () => {
+    const c = new ControladorRegistro()
+    c.vista.listar(c.modelo.listar())
+})
