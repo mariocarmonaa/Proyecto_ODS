@@ -30,7 +30,7 @@ class ControladorRegistro {
     }
 
     prepararEdicion(id) {
-        const j = this.modelo.listar().find(x => x.id === id)
+       const j = this.modelo.listar().find(x => Number(x.id) === Number(id))
         if (j) this.vista.rellenarFormulario(j)
     }
 }
