@@ -2,17 +2,20 @@ export default class VistaRegistro {
     constructor(c) {
         this.c = c
 
-        this.nombre = nombre
-        this.fecha = fecha
-        this.genero = tipo
-        this.descripcion = descripcion
-        this.idOculto = idOculto
-        this.tbody = tbody
+        this.nombre = document.querySelector('#nombre')
+        this.fecha = document.querySelector('#fecha')
+        this.genero = document.querySelector('#tipo')
+        this.descripcion = document.querySelector('#descripcion')
+        this.idOculto = document.querySelector('#idOculto')
+        this.tbody = document.querySelector('tbody')
 
         this.animales = document.querySelectorAll('input[name="animalesExtincion"]')
 
-        botonInsertar.onclick = e => this.guardar(e)
-        botonLimpiar.onclick = () => this.limpiar()
+        document.querySelector('#botonInsertar')
+            .onclick = e => this.guardar(e)
+
+        document.querySelector('#botonLimpiar')
+            .onclick = () => this.limpiar()
     }
 
     guardar(e) {
@@ -59,7 +62,7 @@ export default class VistaRegistro {
     }
 
     listar(lista) {
-        tbody.innerHTML = ''
+        this.tbody.innerHTML = ''
 
         lista.forEach(j => {
             const tr = document.createElement('tr')
@@ -84,7 +87,7 @@ export default class VistaRegistro {
             td.appendChild(b2)
             tr.appendChild(td)
 
-            tbody.appendChild(tr)
+            this.tbody.appendChild(tr)
         })
     }
 }
