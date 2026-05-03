@@ -1,21 +1,18 @@
 export default class VistaRegistro {
-    constructor(controlador) {
-        this.c = controlador
+    constructor(c) {
+        this.c = c
 
-        this.nombre = document.querySelector('#nombre')
-        this.fecha = document.querySelector('#fecha')
-        this.genero = document.querySelector('#tipo')
-        this.descripcion = document.querySelector('#descripcion')
-        this.idOculto = document.querySelector('#idOculto')
-        this.tbody = document.querySelector('tbody')
+        this.nombre = nombre
+        this.fecha = fecha
+        this.genero = tipo
+        this.descripcion = descripcion
+        this.idOculto = idOculto
+        this.tbody = tbody
 
         this.animales = document.querySelectorAll('input[name="animalesExtincion"]')
 
-        document.querySelector('#botonInsertar')
-            .addEventListener('click', e => this.guardar(e))
-
-        document.querySelector('#botonLimpiar')
-            .addEventListener('click', () => this.limpiar())
+        botonInsertar.onclick = e => this.guardar(e)
+        botonLimpiar.onclick = () => this.limpiar()
     }
 
     guardar(e) {
@@ -46,44 +43,48 @@ export default class VistaRegistro {
         this.genero.value = 'Masculino'
         this.descripcion.value = ''
         this.idOculto.value = ''
-
         this.animales.forEach(c => c.checked = false)
     }
 
     rellenarFormulario(j) {
-        this.nombre.value = j.getNombre()
-        this.fecha.value = j.getFecha()
-        this.genero.value = j.getGenero()
-        this.idOculto.value = j.getId()
+        this.nombre.value = j.nombre
+        this.fecha.value = j.fecha
+        this.genero.value = j.genero
+        this.descripcion.value = j.descripcion
+        this.idOculto.value = j.id
+
+        this.animales.forEach(c =>
+            c.checked = j.animales.includes(c.value)
+        )
     }
 
     listar(lista) {
-        this.tbody.innerHTML = ''
+        tbody.innerHTML = ''
 
         lista.forEach(j => {
             const tr = document.createElement('tr')
 
             tr.innerHTML = `
-                <td>${j.getNombre()}</td>
-                <td>${j.getFecha()}</td>
-                <td>${j.getGenero()}</td>
+                <td>${j.nombre}</td>
+                <td>${j.fecha}</td>
+                <td>${j.genero}</td>
             `
 
             const td = document.createElement('td')
 
-            const btnE = document.createElement('button')
-            btnE.textContent = 'Editar'
-            btnE.onclick = () => this.c.prepararEdicion(j.getId())
+            const b1 = document.createElement('button')
+            b1.textContent = 'Editar'
+            b1.onclick = () => this.c.prepararEdicion(j.id)
 
-            const btnD = document.createElement('button')
-            btnD.textContent = 'Eliminar'
-            btnD.onclick = () => this.c.eliminar(j.getId())
+            const b2 = document.createElement('button')
+            b2.textContent = 'Eliminar'
+            b2.onclick = () => this.c.eliminar(j.id)
 
-            td.appendChild(btnE)
-            td.appendChild(btnD)
-
+            td.appendChild(b1)
+            td.appendChild(b2)
             tr.appendChild(td)
-            this.tbody.appendChild(tr)
+
+            tbody.appendChild(tr)
         })
     }
 }
