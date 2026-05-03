@@ -1,26 +1,23 @@
-export default class ModeloJugador{
-    #jugadores
-
-    constructor(){
-        this.#jugadores = new Set()
+export default class ModeloJugador {
+    constructor() {
+        this.jugadores = []
     }
 
-    agregarJugador(jugador){
-        console.log("Jugador agregado: " + jugador)
-        this.#jugadores.add(jugador)
-        console.log(this.#jugadores)
+    agregar(jugador) {
+        this.jugadores.push(jugador)
     }
 
-    listar(){
-        return this.#jugadores
+    listar() {
+        return this.jugadores
     }
 
-    eliminarJugador(id){
-        for (const jugador of this.#jugadores){
-            if(jugador.getId() === id){
-                this.#jugadores.delete(jugador)
-                break
-            }
-        }
+    eliminar(id) {
+        this.jugadores = this.jugadores.filter(j => j.getId() !== id)
+    }
+
+    editar(jugadorNuevo) {
+        this.jugadores = this.jugadores.map(j =>
+            j.getId() === jugadorNuevo.getId() ? jugadorNuevo : j
+        )
     }
 }
