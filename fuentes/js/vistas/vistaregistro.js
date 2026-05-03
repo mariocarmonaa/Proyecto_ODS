@@ -27,7 +27,7 @@ export default class VistaRegistro {
 
         const datos = {
             nombre: this.nombre.value,
-            fechaNacimiento: this.fecha.value,
+            fecha: this.fecha.value,
             genero: this.genero.value,
             descripcion: this.descripcion.value,
             animales: animalesSel,
@@ -75,20 +75,20 @@ export default class VistaRegistro {
 
             const td = document.createElement('td')
 
-            const btnEdit = document.createElement('button')
-            btnEdit.textContent = 'Editar'
-            btnEdit.addEventListener('click', () => {
+            const btnE = document.createElement('button')
+            btnE.textContent = 'Editar'
+            btnE.addEventListener('click', () => {
                 this.c.prepararEdicion(j.id)
             })
 
-            const btnDel = document.createElement('button')
-            btnDel.textContent = 'Eliminar'
-            btnDel.addEventListener('click', () => {
+            const btnD = document.createElement('button')
+            btnD.textContent = 'Eliminar'
+            btnD.addEventListener('click', () => {
                 this.c.eliminar(j.id)
             })
 
-            td.appendChild(btnEdit)
-            td.appendChild(btnDel)
+            td.appendChild(btnE)
+            td.appendChild(btnD)
             tr.appendChild(td)
 
             this.tbody.appendChild(tr)
