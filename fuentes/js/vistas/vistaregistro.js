@@ -1,99 +1,89 @@
-export default class VistaRegistro{
-    #inputNombre
-    #inputFecha
-    #inputGenero
-    #inputDescripcion
-    #inputBoton
-    #controladorRegistro
-    #inputAnimales
-    #tbody
-    #inputBotonLimpiar
-    #idUsuario
+export default class VistaRegistro {
+    constructor(controlador) {
+        this.c = controlador
 
-    constructor(controladorRegistro){
-        this.#controladorRegistro = controladorRegistro
-        this.#obtenerReferenciasIU()
-        this.#inputBoton.addEventListener('click', this.#insertar.bind(this))
-        this.#inputBotonLimpiar.addEventListener('click', this.#limpiar.bind(this))
-        this.#idUsuario = 0
+        this.nombre = document.querySelector('#nombre')
+        this.fecha = document.querySelector('#fecha')
+        this.genero = document.querySelector('#tipo')
+        this.descripcion = document.querySelector('#descripcion')
+        this.idOculto = document.querySelector('#idOculto')
+        this.tbody = document.querySelector('tbody')
+
+        this.animales = document.querySelectorAll('input[name="animalesExtincion"]')
+
+        document.querySelector('#botonInsertar')
+            .addEventListener('click', e => this.guardar(e))
+
+        document.querySelector('#botonLimpiar')
+            .addEventListener('click', () => this.limpiar())
     }
 
-    #obtenerReferenciasIU(){
-        this.#inputNombre = document.querySelector('#nombre')
-        this.#inputFecha = document.querySelector('#fecha')
-        this.#inputGenero = document.querySelector('#tipo')
-        this.#inputDescripcion = document.querySelector('#descripcion')
-        this.#inputBoton = document.querySelector('#botonInsertar')
-        this.#inputBotonLimpiar = document.querySelector('#botonLimpiar')
-        this.#tbody = document.querySelector('tbody')
-        this.#inputAnimales = document.querySelectorAll('input[name="animalesExtincion"]')
-        console.log(this.#tbody)
-    }
+    guardar(e) {
+        e.preventDefault()
 
-    #insertar(evento){
-        evento.preventDefault()
-        const nombre = this.#inputNombre.value
-        const fecha = this.#inputFecha.value 
-        const genero = this.#inputGenero.value 
-        const descripcion = this.#inputDescripcion.value
-        const animalesSeleccionados = []
-        const idUser = this.#idUsuario
-        for (const chk of this.#inputAnimales){
-            if (chk.checked){
-                animalesSeleccionados.push(chk.value)
-            }
-        }
+        const animalesSel = [...this.animales]
+            .filter(c => c.checked)
+            .map(c => c.value)
+
         const datos = {
-            'nombre': nombre,
-            'fechaNacimiento': fecha,
-            'genero': genero,
-            'descripcion': descripcion,
-            'animales': animalesSeleccionados,
-            'id': idUser
+            nombre: this.nombre.value,
+            fechaNacimiento: this.fecha.value,
+            genero: this.genero.value,
+            descripcion: this.descripcion.value,
+            animales: animalesSel,
+            id: this.idOculto.value ? Number(this.idOculto.value) : Date.now()
         }
-        this.#idUsuario += 1
-        console.log(datos)
-        this.#controladorRegistro.insertar(datos)
+
+        if (this.idOculto.value) this.c.editar(datos)
+        else this.c.insertar(datos)
+
+        this.limpiar()
     }
 
-    #limpiar(){
-        this.#inputNombre.value = ''
-        this.#inputFecha.value = ''
-        this.#inputGenero.value = 'Masculino'
-        this.#inputDescripcion.value = ''
-        const marcados = document.querySelectorAll('input[type="checkbox"]:checked');
-        marcados.forEach(checkbox => {
-            checkbox.checked = false;
-        });
+    limpiar() {
+        this.nombre.value = ''
+        this.fecha.value = ''
+        this.genero.value = 'Masculino'
+        this.descripcion.value = ''
+        this.idOculto.value = ''
+
+        this.animales.forEach(c => c.checked = false)
     }
 
-    listar(jugadores){
-        this.#tbody.innerHTML = ''
-        jugadores.forEach (jugador => {
+    rellenarFormulario(j) {
+        this.nombre.value = j.getNombre()
+        this.fecha.value = j.getFecha()
+        this.genero.value = j.getGenero()
+        this.idOculto.value = j.getId()
+    }
+
+    listar(lista) {
+        this.tbody.innerHTML = ''
+
+        lista.forEach(j => {
             const tr = document.createElement('tr')
-            this.#tbody.appendChild(tr)
-            const tdNombre = document.createElement('td')
-            tr.appendChild(tdNombre)
-            tdNombre.textContent = jugador.getNombre()
 
-            const tdFechaNacimiento = document.createElement('td')
-            tr.appendChild(tdFechaNacimiento)
-            tdFechaNacimiento.textContent = jugador.getFecha()
+            tr.innerHTML = `
+                <td>${j.getNombre()}</td>
+                <td>${j.getFecha()}</td>
+                <td>${j.getGenero()}</td>
+            `
 
-            const tdGenero = document.createElement('td')
-            tr.appendChild(tdGenero)
-            tdGenero.textContent = jugador.getGenero()
+            const td = document.createElement('td')
 
-            const tdEliminar = document.createElement('td')
-            const botonEliminar = document.createElement('button')
-            botonEliminar.textContent = "Eliminar"
+            const btnE = document.createElement('button')
+            btnE.textContent = 'Editar'
+            btnE.onclick = () => this.c.prepararEdicion(j.getId())
 
-            botonEliminar.addEventListener('click', () =>{
-                this.#controladorRegistro.eliminar(jugador.getId())
-            })
+            const btnD = document.createElement('button')
+            btnD.textContent = 'Eliminar'
+            btnD.onclick = () => this.c.eliminar(j.getId())
 
-            tdEliminar.appendChild(botonEliminar)
-            tr.appendChild(tdEliminar)
+            td.appendChild(btnE)
+            td.appendChild(btnD)
+
+            tr.appendChild(td)
+            this.tbody.appendChild(tr)
         })
     }
 }
