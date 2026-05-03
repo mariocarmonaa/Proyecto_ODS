@@ -12,12 +12,12 @@ export default class ModeloJugador {
     }
 
     eliminar(id) {
-        this.jugadores = this.jugadores.filter(j => j.getId() !== id)
+        this.jugadores = this.jugadores.filter(j => j.id !== id)
     }
 
     editar(nuevo) {
         this.jugadores = this.jugadores.map(j =>
-            j.getId() === nuevo.getId() ? nuevo : j
+            j.id === nuevo.id ? nuevo : j
         )
     }
 }
