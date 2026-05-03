@@ -10,17 +10,27 @@ class ControladorRegistro {
 
     insertar(d) {
         this.modelo.agregar(new Jugador(
-            d.nombre, d.fechaNacimiento, d.genero,
-            d.descripcion, d.animales, d.id
+            d.nombre,
+            d.fecha,
+            d.genero,
+            d.descripcion,
+            d.animales,
+            d.id
         ))
+
         this.vista.listar(this.modelo.listar())
     }
 
     editar(d) {
         this.modelo.editar(new Jugador(
-            d.nombre, d.fechaNacimiento, d.genero,
-            d.descripcion, d.animales, d.id
+            d.nombre,
+            d.fecha,
+            d.genero,
+            d.descripcion,
+            d.animales,
+            d.id
         ))
+
         this.vista.listar(this.modelo.listar())
     }
 
@@ -30,7 +40,7 @@ class ControladorRegistro {
     }
 
     prepararEdicion(id) {
-       const j = this.modelo.listar().find(x => Number(x.id) === Number(id))
+        const j = this.modelo.listar().find(x => x.id === Number(id))
         if (j) this.vista.rellenarFormulario(j)
     }
 }
