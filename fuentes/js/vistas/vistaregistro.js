@@ -12,10 +12,10 @@ export default class VistaRegistro {
         this.animales = document.querySelectorAll('input[name="animalesExtincion"]')
 
         document.querySelector('#botonInsertar')
-            .onclick = e => this.guardar(e)
+            .addEventListener('click', e => this.guardar(e))
 
         document.querySelector('#botonLimpiar')
-            .onclick = () => this.limpiar()
+            .addEventListener('click', () => this.limpiar())
     }
 
     guardar(e) {
@@ -75,16 +75,20 @@ export default class VistaRegistro {
 
             const td = document.createElement('td')
 
-            const b1 = document.createElement('button')
-            b1.textContent = 'Editar'
-            b1.onclick = () => this.c.prepararEdicion(j.id)
+            const btnEdit = document.createElement('button')
+            btnEdit.textContent = 'Editar'
+            btnEdit.addEventListener('click', () => {
+                this.c.prepararEdicion(j.id)
+            })
 
-            const b2 = document.createElement('button')
-            b2.textContent = 'Eliminar'
-            b2.onclick = () => this.c.eliminar(j.id)
+            const btnDel = document.createElement('button')
+            btnDel.textContent = 'Eliminar'
+            btnDel.addEventListener('click', () => {
+                this.c.eliminar(j.id)
+            })
 
-            td.appendChild(b1)
-            td.appendChild(b2)
+            td.appendChild(btnEdit)
+            td.appendChild(btnDel)
             tr.appendChild(td)
 
             this.tbody.appendChild(tr)
