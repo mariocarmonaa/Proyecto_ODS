@@ -12,7 +12,7 @@ export default class ModeloJugador {
     }
 
     eliminar(id) {
-        this.jugadores = this.jugadores.filter(j => j.id !== id)
+        this.jugadores = this.jugadores.filter(j => j.id !== Number(id))
     }
 
     editar(nuevo) {
