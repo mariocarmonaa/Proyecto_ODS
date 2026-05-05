@@ -2,9 +2,11 @@ const BOTONREGISTRO = document.querySelector("#botonRegistro")
 const BOTONLISTADO = document.querySelector("#botonListado")
 const VISTAS = document.querySelectorAll(".Vista")
 const BOTONMENU = document.querySelectorAll(".botonMenu")
+const BOTONJUEGO = document.querySelector("#botonJuego")
 const MENU = VISTAS[0]
 const REGISTRO = VISTAS[1]
 const LISTADO = VISTAS[2]
+const JUEGO = VISTAS[3]
 console.log(LISTADO)
 
 const mostrarRegistro = evento =>{
@@ -25,6 +27,12 @@ const mostrarListado = evento =>{
     LISTADO.classList.add("activa")
 }
 
+const mostrarJuego = evento => {
+    evento.preventDefault()
+    ocultarVistas()
+    JUEGO.classList.add("activa")
+}
+
 function ocultarVistas(){
     MENU.classList.remove("activa")
     REGISTRO.classList.remove("activa")
@@ -36,3 +44,4 @@ BOTONMENU.forEach(boton =>{
 })
 BOTONREGISTRO.addEventListener('click', mostrarRegistro)
 BOTONLISTADO.addEventListener('click', mostrarListado)
+BOTONJUEGO.addEventListener('click', mostrarJuego)

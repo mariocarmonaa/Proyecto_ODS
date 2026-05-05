@@ -1,7 +1,11 @@
 body{
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 1rem;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
 }
 .Vista{
     display: none;
@@ -10,3 +14,18 @@ body{
 .activa{
     display: block;
 }
+
+img{
+    position: absolute;
+    top: 500px;
+    left: calc(50% -32px);
+}
+
+#monoAviador {
+    width: 120px !important;
+    height: auto !important;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+
