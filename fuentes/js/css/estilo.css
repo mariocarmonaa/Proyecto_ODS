@@ -53,3 +53,25 @@ body{
     image-rendering: pixelated;
 }
 
+.banana{
+    width: 80px;
+    height: auto;
+    position: absolute;
+    z-index: 2;
+    image-rendering: pixelated;
+}
+
+#contador {
+    position: relative;   
+    z-index: 3;          
+    color: white;
+    font-size: 24px;
+}
+
+#puntos{
+    position: relative;   
+    z-index: 3;          
+    color: rgb(202, 240, 7);
+    font-size: 24px;
+}
+
