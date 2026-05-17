@@ -44,6 +44,8 @@ function ocultarVistas(){
     MENU.classList.remove("activa")
     REGISTRO.classList.remove("activa")
     LISTADO.classList.remove("activa")
+    ESTADISTICAS.classList.remove("activa")
+    JUEGO.classList.remove("activa")
 }
 
 BOTONMENU.forEach(boton =>{
