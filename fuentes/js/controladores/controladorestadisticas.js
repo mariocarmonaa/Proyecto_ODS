@@ -14,5 +14,9 @@ class ControladorEstadisticas {
 
 document.addEventListener('DOMContentLoaded', () => {
     const c = new ControladorEstadisticas()
-    c.mostrarEstadisticas()
-})
+    const btnEstadisticas = document.querySelector("#botonEstadisticas")
+    if (btnEstadisticas){
+        btnEstadisticas.addEventListener('click', () => {
+            c.mostrarEstadisticas()
+   })
+ }
