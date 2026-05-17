@@ -8,7 +8,9 @@ class ControladorEstadisticas {
     }
 
     mostrarEstadisticas() {
-        this.vista.mostrar(this.modelo.listar())
+        const datos = this.modelo.listar()
+        console.log("Mostrando estadisticas con datos:", datos)
+        this.vista.mostrar(datos)
     }
 }
 
