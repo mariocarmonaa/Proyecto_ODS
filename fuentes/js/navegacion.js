@@ -39,6 +39,9 @@ const mostrarEstadisticas = evento => {
     evento.preventDefault()
     ocultarVistas()
     ESTADISTICAS.classList.add("activa")
+    if (window.controladorEstadisticas) {
+        window.controladorEstadisticas.mostrarEstadisticas()
+    }
 }
 function ocultarVistas(){
     MENU.classList.remove("activa")
