@@ -1,10 +1,6 @@
-class ModeloJugador {
+export default class ModeloJugador {
     constructor() {
-        if (ModeloJugador.instancia) {
-            return ModeloJugador.instancia
-        }
         this.jugadores = []
-        ModeloJugador.instancia = this
     }
 
     agregar(j) {
@@ -25,5 +21,3 @@ class ModeloJugador {
         )
     }
 }
-
-export default ModeloJugador
