@@ -1,51 +1,46 @@
-import VistaRegistro from '../vistas/vistaregistro.js'
-import Jugador from '../modelos/jugador.js'
-import ModeloJugador from '../modelos/modelojugador.js'
-
 class ControladorRegistro {
-    constructor() {
-        this.vista = new VistaRegistro(this)
-        this.modelo = new ModeloJugador()
+    constructor(modelo) {
+        this.modelo = modelo;
+        this.vista = new VistaRegistro(this);
     }
 
     insertar(d) {
-        this.modelo.agregar(new Jugador(
-            d.nombre,
-            d.fecha,
-            d.genero,
-            d.descripcion,
-            d.animales,
-            d.id
-        ))
-
-        this.vista.listar(this.modelo.listar())
+        var nuevo = new Jugador(d.nombre, d.fecha, d.genero, d.descripcion, d.animales, d.id);
+        this.modelo.agregar(nuevo);
+        this.actualizarTabla();
     }
 
     editar(d) {
-        this.modelo.editar(new Jugador(
-            d.nombre,
-            d.fecha,
-            d.genero,
-            d.descripcion,
-            d.animales,
-            d.id
-        ))
-
-        this.vista.listar(this.modelo.listar())
+        var editado = new Jugador(d.nombre, d.fecha, d.genero, d.descripcion, d.animales, d.id);
+        this.modelo.editar(editado);
+        this.actualizarTabla();
     }
 
     eliminar(id) {
-        this.modelo.eliminar(id)
-        this.vista.listar(this.modelo.listar())
+        this.modelo.eliminar(id);
+        this.actualizarTabla();
     }
 
     prepararEdicion(id) {
-        const j = this.modelo.listar().find(x => x.id === Number(id))
-        if (j) this.vista.rellenarFormulario(j)
+        var listado = this.modelo.listar();
+        var encontrado = null;
+
+        for (var i = 0; i < listado.length; i++) {
+            if (listado[i].id === id) {
+                encontrado = listado[i];
+                break;
+            }
+        }
+
+        if (encontrado !== null) {
+            this.vista.rellenarParaEditar(encontrado);
+
+            ocultarVistas();
+            REGISTRO.classList.add("activa");
+        }
+    }
+
+    actualizarTabla() {
+        this.vista.pintarTabla(this.modelo.listar());
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const c = new ControladorRegistro()
-    c.vista.listar(c.modelo.listar())
-})

@@ -1,10 +1,13 @@
-import vistajuego from '../vistas/vistajuego.js'
-class controladorjuego{
-    #vista
-    constructor(){
-        this.vista = new vistajuego(this)
+class ControladorJuego {
+    constructor() {
+        this.vista = new VistaJuego(this);
+    }
+
+    comenzar() {
+        this.vista.iniciar();
+    }
+
+    detener() {
+        this.vista.detener();
     }
 }
-document.addEventListener('DOMContentLoaded', () =>{
-    const controlador = new controladorjuego()
-})

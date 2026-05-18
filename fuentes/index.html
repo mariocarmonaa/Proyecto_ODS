@@ -4,93 +4,110 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CRUD ODS</title>
+    <title>Proyecto ODS 15 - DAW</title>
     <link rel="stylesheet" type="text/css" href="js/css/estilo.css">
 </head>
 
 <body>
-    <div class="Vista activa">MENU DEL JUEGO
-        <button id="botonRegistro">Ir al registro de usuarios</button>
-        <button id="botonListado">Ir al listado de usuarios</button>
-        <button id="botonJuego">Ir al juego</button>
-		 <button id="botonEstadisticas">Ir a estadísticas</button>
 
+    <!-- MENÚ PRINCIPAL (VISTA 0) -->
+    <div class="Vista activa">
+        <h1>MENÚ ODS 15</h1>
+        <button id="botonRegistro">Registrar Usuario</button>
+        <button id="botonListado">Ver Listado</button>
+        <button id="botonJuego">Jugar</button>
+        <button id="botonEstadisticas">Ver Estadísticas</button>
     </div>
-    <div class="Vista"> FORMULARIO DE ALTA DE USUARIOS
+
+    <!-- FORMULARIO DE ALTA (VISTA 1) -->
+    <div class="Vista">
+        <h2>ALTA DE USUARIO</h2>
         <div>
-            <label for="nombre">Introduce el nombre de usuario: </label>
+            <label>Nombre:</label>
             <input id="nombre" type="text" />
         </div>
-
         <div>
-            <label for="fecha">Introduce tu fecha de nacimiento: </label>
+            <label>Fecha de Nacimiento:</label>
             <input id="fecha" type="date" />
         </div>
-
         <div>
-            <label for="tipo">Introduce tu género: </label>
+            <label>Género:</label>
             <select id="tipo">
                 <option>Masculino</option>
                 <option>Femenino</option>
                 <option>Prefiero no decirlo</option>
             </select>
         </div>
-
-        <p>Selecciona tus animales en peligro de extinción favoritos: </p>
         <div>
-            <input type="checkbox" id="panda" name="animalesExtincion" value="panda" />
-            <label for="panda">Oso Panda</label><br>
+            <p>Animales favoritos en extinción:</p>
+            <input type="checkbox" name="animalesExtincion" value="Oso Panda" /> Oso Panda<br>
+            <input type="checkbox" name="animalesExtincion" value="Tigre de Bengala" /> Tigre de Bengala<br>
+            <input type="checkbox" name="animalesExtincion" value="Ajolote" /> Ajolote<br>
         </div>
         <div>
-            <input type="checkbox" id="tigre" name="animalesExtincion" value="tigre" />
-            <label for="tigre">Tigre de Bengala</label><br>
-        </div>
-        <div>
-            <input type="checkbox" id="ajolote" name="animalesExtincion" value="ajolote" />
-            <label for="ajolote">Ajolote</label><br>
+            <label>¿Por qué los has elegido?:</label>
+            <textarea id="descripcion" rows="3"></textarea>
         </div>
 
-        <div>
-            <label for="descripcion">Introduce una breve explicación de porque has elegido estos animales: </label><br>
-            <textarea id="descripcion" rows="4" cols="50" placeholder="Deja aquí tu descripcion:..."></textarea>
-        </div>
-
+        <!-- Input oculto para saber si editamos o guardamos uno nuevo -->
         <input type="hidden" id="idOculto" value="" />
 
         <div>
-            <button id="botonInsertar">Registrar</button>
-            <button id="botonLimpiar">Limpiar formulario</button>
-            <button class="botonMenu">Volver al menú</button>
+            <button id="botonInsertar">Guardar</button>
+            <button id="botonLimpiar">Limpiar</button>
+            <button class="botonMenu">Volver al Menú</button>
         </div>
-		<script type="module" defer src="js/controladores/controladorregistro.js"></script>
-        <script type="module" defer src="js/navegacion.js"></script>
-        <script type="module" defer src="js/controladores/controladorjuego.js"></script>
-	 <script type="module" defer src="js/controladores/controladorestadisticas.js"></script>
+    </div>
 
-    </div>
-    <div class="Vista">LISTADO DE USUARIOS
-        <hr />
-        <table>
+    <!-- LISTADO DE USUARIOS (VISTA 2) -->
+    <div class="Vista">
+        <h2>LISTADO DE USUARIOS</h2>
+        <table border="1" style="width:100%; text-align:left;">
             <thead>
-                <th>Nombre</th>
-                <th>Fecha de Nacimiento</th>
-                <th>Genero</th>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha Nacimiento</th>
+                    <th>Género</th>
+                    <th>Acciones</th>
+                </tr>
             </thead>
-            <tbody>
-            </tbody>
+            <tbody id="tablaCuerpo"></tbody>
         </table>
-        <button class="botonMenu">Volver al menú</button>
+        <br>
+        <button class="botonMenu">Volver al Menú</button>
     </div>
-    <div class="Vista">ESTADISTICAS
-		<div id="estadisticasContenido"></div>
-		<button class="botonMenu">Volver al menu</button>
-	</div>
-	<div class="Vista" id="vistaJuego">
-        <img id="monoAviador" src="img/monoAventurero.png" />
-        <img id="imagenJungla" src="img/imagenJungla.png" />
-        <div id="contador">.</div>
-        <div id="puntos"></div>
+
+    <!-- ESTADÍSTICAS (VISTA 3) -->
+    <div class="Vista">
+        <h2>ESTADÍSTICAS</h2>
+        <div id="estadisticasContenido"></div>
+        <button class="botonMenu">Volver al Menú</button>
     </div>
+
+    <!-- PANTALLA DE JUEGO (VISTA 4) -->
+    <div class="Vista" id="vistaJuego">
+        <div id="hudJuego">
+            <div id="contador">Tiempo: 0s</div>
+            <div id="puntos">Bananas: 0</div>
+            <button class="botonMenu" id="botonSalirJuego">Salir al Menú</button>
+        </div>
+        <img id="monoAviador" src="img/monoAventurero.png" alt="Mono" />
+        <img id="imagenJungla" src="img/imagenJungla.png" alt="Jungla" />
+    </div>
+
+    <!-- CARGA DE SCRIPTS EN ORDEN -->
+    <script src="js/modelos/jugador.js"></script>
+    <script src="js/modelos/modelojugador.js"></script>
+
+    <script src="js/vistas/vistajuego.js"></script>
+    <script src="js/vistas/vistaregistro.js"></script>
+    <script src="js/vistas/vistaestadisticas.js"></script>
+
+    <script src="js/controladores/controladorjuego.js"></script>
+    <script src="js/controladores/controladorregistro.js"></script>
+    <script src="js/controladores/controladorestadisticas.js"></script>
+
+    <script src="js/navegacion.js"></script>
 </body>
 
 </html>
