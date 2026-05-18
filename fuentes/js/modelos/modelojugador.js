@@ -1,23 +1,34 @@
-export default class ModeloJugador {
+class ModeloJugador {
     constructor() {
-        this.jugadores = []
+        this.lista = [];
+        this.ultimoId = 0;
     }
 
-    agregar(j) {
-        this.jugadores.push(j)
+    agregar(nuevoJugador) {
+        this.ultimoId = this.ultimoId + 1;
+        nuevoJugador.id = this.ultimoId;
+        this.lista.push(nuevoJugador);
     }
 
     listar() {
-        return this.jugadores
+        return this.lista;
     }
 
     eliminar(id) {
-        this.jugadores = this.jugadores.filter(j => j.id !== Number(id))
+        for (var i = 0; i < this.lista.length; i++) {
+            if (this.lista[i].id === id) {
+                this.lista.splice(i, 1);
+                break;
+            }
+        }
     }
 
-    editar(nuevo) {
-        this.jugadores = this.jugadores.map(j =>
-            j.id === nuevo.id ? nuevo : j
-        )
+    editar(jugadorEditado) {
+        for (var i = 0; i < this.lista.length; i++) {
+            if (this.lista[i].id === jugadorEditado.id) {
+                this.lista[i] = jugadorEditado;
+                break;
+            }
+        }
     }
 }

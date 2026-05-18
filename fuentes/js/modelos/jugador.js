@@ -1,10 +1,10 @@
-export default class Jugador {
+class Jugador {
     constructor(nombre, fecha, genero, descripcion, animales, id) {
-        this.nombre = nombre
-        this.fecha = fecha
-        this.genero = genero
-        this.descripcion = descripcion
-        this.animales = animales
-        this.id = Number(id)
+        this.nombre = nombre;
+        this.fecha = fecha;
+        this.genero = genero;
+        this.descripcion = descripcion;
+        this.animales = animales;
+        this.id = id;
     }
 }

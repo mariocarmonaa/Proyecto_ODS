@@ -1,97 +1,144 @@
-export default class VistaRegistro {
-    constructor(c) {
-        this.c = c
+class VistaRegistro {
+    constructor(controlador) {
+        this.controlador = controlador;
 
-        this.nombre = document.querySelector('#nombre')
-        this.fecha = document.querySelector('#fecha')
-        this.genero = document.querySelector('#tipo')
-        this.descripcion = document.querySelector('#descripcion')
-        this.idOculto = document.querySelector('#idOculto')
-        this.tbody = document.querySelector('tbody')
+        this.inputNombre = document.querySelector("#nombre");
+        this.inputFecha = document.querySelector("#fecha");
+        this.selectGenero = document.querySelector("#tipo");
+        this.txtDescripcion = document.querySelector("#descripcion");
+        this.inputIdOculto = document.querySelector("#idOculto");
+        this.tablaCuerpo = document.querySelector("#tablaCuerpo");
+        this.checksAnimales = document.querySelectorAll('input[name="animalesExtincion"]');
 
-        this.animales = document.querySelectorAll('input[name="animalesExtincion"]')
+        var botonInsertar = document.querySelector("#botonInsertar");
+        var botonLimpiar = document.querySelector("#botonLimpiar");
 
-        document.querySelector('#botonInsertar')
-            .addEventListener('click', e => this.guardar(e))
+        var self = this;
 
-        document.querySelector('#botonLimpiar')
-            .addEventListener('click', () => this.limpiar())
+        botonInsertar.addEventListener("click", function () {
+            self.enviarDatos();
+        });
+
+        botonLimpiar.addEventListener("click", function () {
+            self.limpiarFormulario();
+        });
     }
 
-    guardar(e) {
-        e.preventDefault()
-
-        const animalesSel = [...this.animales]
-            .filter(c => c.checked)
-            .map(c => c.value)
-
-        const datos = {
-            nombre: this.nombre.value,
-            fecha: this.fecha.value,
-            genero: this.genero.value,
-            descripcion: this.descripcion.value,
-            animales: animalesSel,
-            id: this.idOculto.value ? Number(this.idOculto.value) : Date.now()
+    enviarDatos() {
+        var animalesSeleccionados = [];
+        for (var i = 0; i < this.checksAnimales.length; i++) {
+            if (this.checksAnimales[i].checked === true) {
+                animalesSeleccionados.push(this.checksAnimales[i].value);
+            }
         }
 
-        if (this.idOculto.value) this.c.editar(datos)
-        else this.c.insertar(datos)
+        var idFormulario = this.inputIdOculto.value;
+        var idConvertido = null;
 
-        this.limpiar()
+        if (idFormulario !== "") {
+            idConvertido = Number(idFormulario);
+        }
+
+        var datos = {
+            nombre: this.inputNombre.value,
+            fecha: this.inputFecha.value,
+            genero: this.selectGenero.value,
+            descripcion: this.txtDescripcion.value,
+            animales: animalesSeleccionados,
+            id: idConvertido
+        };
+
+        if (this.inputIdOculto.value !== "") {
+            this.controlador.editar(datos);
+        } else {
+            this.controlador.insertar(datos);
+        }
+
+        this.limpiarFormulario();
     }
 
-    limpiar() {
-        this.nombre.value = ''
-        this.fecha.value = ''
-        this.genero.value = 'Masculino'
-        this.descripcion.value = ''
-        this.idOculto.value = ''
-        this.animales.forEach(c => c.checked = false)
+    limpiarFormulario() {
+        this.inputNombre.value = "";
+        this.inputFecha.value = "";
+        this.selectGenero.value = "Masculino";
+        this.txtDescripcion.value = "";
+        this.inputIdOculto.value = "";
+        for (var i = 0; i < this.checksAnimales.length; i++) {
+            this.checksAnimales[i].checked = false;
+        }
     }
 
-    rellenarFormulario(j) {
-        this.nombre.value = j.nombre
-        this.fecha.value = j.fecha
-        this.genero.value = j.genero
-        this.descripcion.value = j.descripcion
-        this.idOculto.value = j.id
+    rellenarParaEditar(jugador) {
+        this.inputNombre.value = jugador.nombre;
+        this.inputFecha.value = jugador.fecha;
+        this.selectGenero.value = jugador.genero;
+        this.txtDescripcion.value = jugador.descripcion;
+        this.inputIdOculto.value = jugador.id;
 
-        this.animales.forEach(c =>
-            c.checked = j.animales.includes(c.value)
-        )
+        for (var i = 0; i < this.checksAnimales.length; i++) {
+            var checkActual = this.checksAnimales[i];
+            var encontrado = false;
+
+            for (var j = 0; j < jugador.animales.length; j++) {
+                if (jugador.animales[j] === checkActual.value) {
+                    encontrado = true;
+                }
+            }
+
+            if (encontrado === true) {
+                checkActual.checked = true;
+            } else {
+                checkActual.checked = false;
+            }
+        }
     }
 
-    listar(lista) {
-        this.tbody.innerHTML = ''
+    pintarTabla(listaJugadores) {
+        this.tablaCuerpo.innerHTML = "";
+        var self = this;
 
-        lista.forEach(j => {
-            const tr = document.createElement('tr')
+        for (var i = 0; i < listaJugadores.length; i++) {
+            var j = listaJugadores[i];
+            var fila = document.createElement("tr");
 
-            tr.innerHTML = `
-                <td>${j.nombre}</td>
-                <td>${j.fecha}</td>
-                <td>${j.genero}</td>
-            `
+            var tdNombre = document.createElement("td");
+            tdNombre.textContent = j.nombre;
+            fila.appendChild(tdNombre);
 
-            const td = document.createElement('td')
+            var tdFecha = document.createElement("td");
+            tdFecha.textContent = j.fecha;
+            fila.appendChild(tdFecha);
 
-            const btnE = document.createElement('button')
-            btnE.textContent = 'Editar'
-            btnE.addEventListener('click', () => {
-                this.c.prepararEdicion(j.id)
-            })
+            var tdGenero = document.createElement("td");
+            tdGenero.textContent = j.genero;
+            fila.appendChild(tdGenero);
 
-            const btnD = document.createElement('button')
-            btnD.textContent = 'Eliminar'
-            btnD.addEventListener('click', () => {
-                this.c.eliminar(j.id)
-            })
+            var tdAcciones = document.createElement("td");
 
-            td.appendChild(btnE)
-            td.appendChild(btnD)
-            tr.appendChild(td)
+            var btnEditar = document.createElement("button");
+            btnEditar.textContent = "Editar";
+            btnEditar.style.marginRight = "5px";
 
-            this.tbody.appendChild(tr)
-        })
+            (function (idActual) {
+                btnEditar.addEventListener("click", function () {
+                    self.controlador.prepararEdicion(idActual);
+                });
+            })(j.id);
+
+            var btnEliminar = document.createElement("button");
+            btnEliminar.textContent = "Eliminar";
+
+            (function (idActual) {
+                btnEliminar.addEventListener("click", function () {
+                    self.controlador.eliminar(idActual);
+                });
+            })(j.id);
+
+            tdAcciones.appendChild(btnEditar);
+            tdAcciones.appendChild(btnEliminar);
+            fila.appendChild(tdAcciones);
+
+            this.tablaCuerpo.appendChild(fila);
+        }
     }
 }

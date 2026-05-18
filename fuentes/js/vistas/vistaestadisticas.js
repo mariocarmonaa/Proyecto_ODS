@@ -1,65 +1,41 @@
-export default class VistaEstadisticas {
-    constructor(c) {
-        this.c = c
-        this.contenedor = document.querySelector('#estadisticasContenido')
+class VistaEstadisticas {
+    constructor(controlador) {
+        this.controlador = controlador;
+        this.contenedor = document.querySelector("#estadisticasContenido");
     }
 
     mostrar(lista) {
-    
-        this.contenedor.innerHTML = ''
-
-    
-        const totalUsuarios = lista.length
-
-    
-        const conteoAnimales = {}
-        lista.forEach(j => {
-            if (j.animales && j.animales.length > 0) {
-                j.animales.forEach(animal => {
-                    conteoAnimales[animal] = (conteoAnimales[animal] || 0) + 1
-                })
-            }
-        })
-
-       
-        const conteoGenero = {}
-        lista.forEach(j => {
-            conteoGenero[j.genero] = (conteoGenero[j.genero] || 0) + 1
-        })
-
-        let html = '<h2>Estadisticas del Proyecto ODS 15</h2>'
+        this.contenedor.innerHTML = "";
         
-        html += '<div class="estadistica">'
-        html += '<h3>Total de Usuarios Registrados</h3>'
-        html += '<p class="numero">' + totalUsuarios + '</p>'
-        html += '</div>'
+        var total = lista.length;
+        var hombres = 0;
+        var mujeres = 0;
+        var otros = 0;
 
-        html += '<div class="estadistica">'
-        html += '<h3>Animales Favoritos</h3>'
-        if (Object.keys(conteoAnimales).length > 0) {
-            html += '<ul>'
-            for (let animal in conteoAnimales) {
-                html += '<li>' + animal + ': ' + conteoAnimales[animal] + ' usuario(s)</li>'
+        for (var i = 0; i < lista.length; i++) {
+            if (lista[i].genero === "Masculino") {
+                hombres = hombres + 1;
+            } else if (lista[i].genero === "Femenino") {
+                mujeres = mujeres + 1;
+            } else {
+                otros = otros + 1;
             }
-            html += '</ul>'
-        } else {
-            html += '<p>No hay datos aun</p>'
         }
-        html += '</div>'
 
-        html += '<div class="estadistica">'
-        html += '<h3>Distribucion por Genero</h3>'
-        if (Object.keys(conteoGenero).length > 0) {
-            html += '<ul>'
-            for (let genero in conteoGenero) {
-                html += '<li>' + genero + ': ' + conteoGenero[genero] + ' usuario(s)</li>'
-            }
-            html += '</ul>'
-        } else {
-            html += '<p>No hay datos aun</p>'
-        }
-        html += '</div>'
+        var html = "";
+        html = html + "<div class='estadistica'>";
+        html = html + "<h3>Total de usuarios registrados:</h3>";
+        html = html + "<p>" + total + "</p>";
+        html = html + "</div>";
+        html = html + "<div class='estadistica'>";
+        html = html + "<h3>Clasificación por Géneros:</h3>";
+        html = html + "<ul>";
+        html = html + "<li>Hombres: " + hombres + "</li>";
+        html = html + "<li>Mujeres: " + mujeres + "</li>";
+        html = html + "<li>Otros / No especificado: " + otros + "</li>";
+        html = html + "</ul>";
+        html = html + "</div>";
 
-        this.contenedor.innerHTML = html
+        this.contenedor.innerHTML = html;
     }
 }
