@@ -90,4 +90,4 @@ El sistema permite:
 
 ## 📌 Estado del proyecto
 
-🚧 En desarrollo (fase CRUD, CREATE READ UPDATE, DELETE)
+✅ Completado (fase CRUD, CREATE READ UPDATE, DELETE)
