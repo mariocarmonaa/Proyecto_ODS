@@ -5,10 +5,12 @@ class VistaRegistro {
         this.inputNombre = document.querySelector("#nombre");
         this.inputFecha = document.querySelector("#fecha");
         this.selectGenero = document.querySelector("#tipo");
+        this.radiosAlertas = document.getElementsByName("alertas");
         this.txtDescripcion = document.querySelector("#descripcion");
         this.inputIdOculto = document.querySelector("#idOculto");
         this.tablaCuerpo = document.querySelector("#tablaCuerpo");
         this.checksAnimales = document.querySelectorAll('input[name="animalesExtincion"]');
+        this.inputBuscador = document.querySelector("#inputBuscador");
 
         var botonInsertar = document.querySelector("#botonInsertar");
         var botonLimpiar = document.querySelector("#botonLimpiar");
@@ -22,6 +24,11 @@ class VistaRegistro {
         botonLimpiar.addEventListener("click", function () {
             self.limpiarFormulario();
         });
+
+        // RÚBRICA: Listener para la búsqueda avanzada interactiva del CRUD
+        this.inputBuscador.addEventListener("input", function () {
+            self.controlador.filtrarPorNombre(self.inputBuscador.value);
+        });
     }
 
     enviarDatos() {
@@ -29,6 +36,14 @@ class VistaRegistro {
         for (var i = 0; i < this.checksAnimales.length; i++) {
             if (this.checksAnimales[i].checked === true) {
                 animalesSeleccionados.push(this.checksAnimales[i].value);
+            }
+        }
+
+        // Obtener valor del radio seleccionado
+        var alertaSeleccionada = "Si";
+        for (var r = 0; r < this.radiosAlertas.length; r++) {
+            if (this.radiosAlertas[r].checked === true) {
+                alertaSeleccionada = this.radiosAlertas[r].value;
             }
         }
 
@@ -43,6 +58,7 @@ class VistaRegistro {
             nombre: this.inputNombre.value,
             fecha: this.inputFecha.value,
             genero: this.selectGenero.value,
+            alertas: alertaSeleccionada,
             descripcion: this.txtDescripcion.value,
             animales: animalesSeleccionados,
             id: idConvertido
@@ -61,8 +77,10 @@ class VistaRegistro {
         this.inputNombre.value = "";
         this.inputFecha.value = "";
         this.selectGenero.value = "Masculino";
+        this.radiosAlertas[0].checked = true;
         this.txtDescripcion.value = "";
         this.inputIdOculto.value = "";
+        document.querySelector("#archivoAvatar").value = ""; // Limpia el file input
         for (var i = 0; i < this.checksAnimales.length; i++) {
             this.checksAnimales[i].checked = false;
         }
@@ -72,6 +90,13 @@ class VistaRegistro {
         this.inputNombre.value = jugador.nombre;
         this.inputFecha.value = jugador.fecha;
         this.selectGenero.value = jugador.genero;
+
+        for (var r = 0; r < this.radiosAlertas.length; r++) {
+            if (this.radiosAlertas[r].value === jugador.alertas) {
+                this.radiosAlertas[r].checked = true;
+            }
+        }
+
         this.txtDescripcion.value = jugador.descripcion;
         this.inputIdOculto.value = jugador.id;
 
@@ -112,6 +137,10 @@ class VistaRegistro {
             var tdGenero = document.createElement("td");
             tdGenero.textContent = j.genero;
             fila.appendChild(tdGenero);
+
+            var tdAlertas = document.createElement("td");
+            tdAlertas.textContent = j.alertas;
+            fila.appendChild(tdAlertas);
 
             var tdAcciones = document.createElement("td");
 

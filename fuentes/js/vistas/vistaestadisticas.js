@@ -6,7 +6,7 @@ class VistaEstadisticas {
 
     mostrar(lista) {
         this.contenedor.innerHTML = "";
-        
+
         var total = lista.length;
         var hombres = 0;
         var mujeres = 0;

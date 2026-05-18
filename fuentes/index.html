@@ -10,16 +10,15 @@
 
 <body>
 
-    <!-- MENÚ PRINCIPAL (VISTA 0) -->
     <div class="Vista activa">
         <h1>MENÚ ODS 15</h1>
         <button id="botonRegistro">Registrar Usuario</button>
         <button id="botonListado">Ver Listado</button>
         <button id="botonJuego">Jugar</button>
         <button id="botonEstadisticas">Ver Estadísticas</button>
+        <button id="botonInfo">Información ODS 15</button>
     </div>
 
-    <!-- FORMULARIO DE ALTA (VISTA 1) -->
     <div class="Vista">
         <h2>ALTA DE USUARIO</h2>
         <div>
@@ -38,6 +37,13 @@
                 <option>Prefiero no decirlo</option>
             </select>
         </div>
+
+        <div>
+            <label>¿Desea recibir alertas del ODS 15?:</label>
+            <input type="radio" name="alertas" value="Si" checked /> Sí
+            <input type="radio" name="alertas" value="No" /> No
+        </div>
+
         <div>
             <p>Animales favoritos en extinción:</p>
             <input type="checkbox" name="animalesExtincion" value="Oso Panda" /> Oso Panda<br>
@@ -49,7 +55,16 @@
             <textarea id="descripcion" rows="3"></textarea>
         </div>
 
-        <!-- Input oculto para saber si editamos o guardamos uno nuevo -->
+        <div>
+            <label>Subir avatar o foto de perfil:</label>
+            <input type="file" id="archivoAvatar" />
+        </div>
+
+        <div>
+            <a href="https://www.un.org/sustainabledevelopment/es/biodiversity/" target="_blank">Saber más sobre metas
+                del ODS 15 de la ONU</a>
+        </div>
+
         <input type="hidden" id="idOculto" value="" />
 
         <div>
@@ -59,15 +74,22 @@
         </div>
     </div>
 
-    <!-- LISTADO DE USUARIOS (VISTA 2) -->
     <div class="Vista">
         <h2>LISTADO DE USUARIOS</h2>
+
+        <div style="margin-bottom: 15px;">
+            <label style="display:inline-block; margin-right:10px;">Buscar por nombre:</label>
+            <input id="inputBuscador" type="text" placeholder="Escribe para filtrar..."
+                style="width: 60%; display:inline-block;" />
+        </div>
+
         <table border="1" style="width:100%; text-align:left;">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Fecha Nacimiento</th>
                     <th>Género</th>
+                    <th>Alertas</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -77,14 +99,12 @@
         <button class="botonMenu">Volver al Menú</button>
     </div>
 
-    <!-- ESTADÍSTICAS (VISTA 3) -->
     <div class="Vista">
         <h2>ESTADÍSTICAS</h2>
         <div id="estadisticasContenido"></div>
         <button class="botonMenu">Volver al Menú</button>
     </div>
 
-    <!-- PANTALLA DE JUEGO (VISTA 4) -->
     <div class="Vista" id="vistaJuego">
         <div id="hudJuego">
             <div id="contador">Tiempo: 0s</div>
@@ -95,7 +115,22 @@
         <img id="imagenJungla" src="img/imagenJungla.png" alt="Jungla" />
     </div>
 
-    <!-- CARGA DE SCRIPTS EN ORDEN -->
+    <div class="Vista">
+        <h2>INFORMACIÓN ODS 15: VIDA DE ECOSISTEMAS TERRESTRES</h2>
+        <div class="info-ods">
+            <p>El ODS 15 busca gestionar sosteniblemente los bosques, luchar contra la desertificación, detener e
+                invertir la degradación de las tierras y detener la pérdida de biodiversidad.</p>
+            <h3>Objetivos de este proyecto:</h3>
+            <ul>
+                <li>Concienciar a través del registro de ciudadanos comprometidos.</li>
+                <li>Fomentar el conocimiento de especies protegidas.</li>
+                <li>Simular mediante el videojuego interactivo la protección de nuestros ecosistemas forestales frente a
+                    amenazas externas.</li>
+            </ul>
+        </div>
+        <button class="botonMenu">Volver al Menú</button>
+    </div>
+
     <script src="js/modelos/jugador.js"></script>
     <script src="js/modelos/modelojugador.js"></script>
 

@@ -9,13 +9,14 @@ const VISTAS = document.querySelectorAll(".Vista");
 const BOTONMENU = document.querySelectorAll(".botonMenu");
 const BOTONJUEGO = document.querySelector("#botonJuego");
 const BOTONESTADISTICAS = document.querySelector("#botonEstadisticas");
+const BOTONINFO = document.querySelector("#botonInfo"); // Nuevo botón para la 6ª vista
 
 const MENU = VISTAS[0];
 const REGISTRO = VISTAS[1];
 const LISTADO = VISTAS[2];
 const ESTADISTICAS = VISTAS[3];
 const JUEGO = VISTAS[4];
-console.log(LISTADO);
+const INFO_ODS = VISTAS[5]; // Nueva vista declarada
 
 function mostrarRegistro(evento) {
     evento.preventDefault();
@@ -54,12 +55,20 @@ function mostrarEstadisticas(evento) {
     controladorEstadisticas.mostrarEstadisticas();
 }
 
+function mostrarInfo(evento) {
+    evento.preventDefault();
+    ocultarVistas();
+    controladorJuego.detener();
+    INFO_ODS.classList.add("activa");
+}
+
 function ocultarVistas() {
     MENU.classList.remove("activa");
     REGISTRO.classList.remove("activa");
     LISTADO.classList.remove("activa");
     ESTADISTICAS.classList.remove("activa");
     JUEGO.classList.remove("activa");
+    INFO_ODS.classList.remove("activa");
 }
 
 for (let i = 0; i < BOTONMENU.length; i++) {
@@ -70,3 +79,4 @@ BOTONREGISTRO.addEventListener('click', mostrarRegistro);
 BOTONLISTADO.addEventListener('click', mostrarListado);
 BOTONJUEGO.addEventListener('click', mostrarJuego);
 BOTONESTADISTICAS.addEventListener('click', mostrarEstadisticas);
+BOTONINFO.addEventListener('click', mostrarInfo);

@@ -1,4 +1,3 @@
-/* Estilos generales de la aplicación */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f4f1;
@@ -7,11 +6,11 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     color: #2e6f40;
 }
 
-/* Manejo de pantallas ocultas y activas mediante clases CSS */
 .Vista {
     display: none;
     background-color: #ffffff;
@@ -26,7 +25,6 @@ h2 {
     display: block;
 }
 
-/* Elementos de los formularios */
 div {
     margin-bottom: 15px;
 }
@@ -48,6 +46,21 @@ textarea {
     border-radius: 4px;
 }
 
+input[type="radio"] {
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+a {
+    color: #2e6f40;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
 button {
     background-color: #4caf50;
     color: white;
@@ -62,7 +75,6 @@ button:hover {
     background-color: #45a049;
 }
 
-/* Estilos específicos de la pantalla del juego */
 #vistaJuego {
     position: relative;
     width: 100%;
@@ -121,8 +133,8 @@ button:hover {
     box-sizing: border-box;
 }
 
-/* Contenedores de las estadísticas */
-.estadistica {
+.estadistica,
+.info-ods {
     border-left: 5px solid #4caf50;
     background-color: #f9f9f9;
     padding: 10px;

@@ -137,11 +137,6 @@ class VistaJuego {
         }
     }
 
-    limpiarPantaya() {
-        // Corrección de nombre de función a limpiarPantalla por consistencia
-        this.limpiarPantalla();
-    }
-
     limpiarPantalla() {
         var obsEnPantalla = document.querySelectorAll(".obstaculo");
         for (var i = 0; i < obsEnPantalla.length; i++) {
